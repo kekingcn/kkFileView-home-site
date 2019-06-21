@@ -1,0 +1,35 @@
+pages:
+ # key is the dirname of pages in src/pages
+ home:
+  # 首页配置
+  zh-cn:
+   title: 'kkFileView - 在线文件预览'
+   keywords: '在线,文件,预览,word,excel,ppt,office,pdf,zip,rar,压缩,文本'
+   description: 'kkFileView使用spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等'
+  # home config
+  en-us:
+   title: 'page title'
+   keywords: 'keyword1,keyword2'
+   description: 'page description'
+ community:
+  # 社区页配置
+  zh-cn:
+   title: 'kkFileView - 在线文件预览'
+   keywords: '在线,文件,预览,word,excel,ppt,office,pdf,zip,rar,压缩,文本'
+   description: 'kkFileView使用spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等'
+  # community page config
+  en-us:
+   title: 'page title'
+   keywords: 'keyword1,keyword2'
+   description: 'page description'
+ blog:
+  # 博客列表页配置
+  zh-cn:
+   title: 'kkFileView - 在线文件预览'
+   keywords: '在线,文件,预览,word,excel,ppt,office,pdf,zip,rar,压缩,文本'
+   description: 'kkFileView使用spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等'
+  en-us:
+   # blog list page config
+   title: 'page title'
+   keywords: 'keyword1,keyword2'
+   description: 'page description'
