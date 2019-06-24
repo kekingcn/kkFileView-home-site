@@ -59,6 +59,14 @@ export default {
     postsTitle: '所有文章',
     list: [
       {
+        title: '2.1.0版本发布',
+        author: '凯京科技',
+        dateStr: 'Jun 24th，2019',
+        desc: 'kkFileView v2.1.0 发布，文件文档在线预览解决方案',
+        link: 'https://www.oschina.net/news/107681/kkfileview-2-1-0-released',
+        target: '_blank',
+      },
+      {
         title: '2.0版本发布',
         author: '凯京科技',
         dateStr: 'May 7th，2019',
