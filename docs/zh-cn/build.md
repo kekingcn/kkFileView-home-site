@@ -6,8 +6,6 @@ description: kkFileView使用spring boot搭建，易上手和部署，基本支�
 ## 1. 环境要求
 1. Java: 1.8+
 2. Maven：3.4+
-3. IDE: 没有特殊要求
-4. OpenOffice或LiberOffice(MacOS或Linux下需要，Windows下已内置)
 
 ## 2. 下载代码&编译打包
 ### 1. 从码云仓库拉取代码
