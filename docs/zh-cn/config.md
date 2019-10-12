@@ -1,6 +1,6 @@
 ---
 title: kkFileView - 在线文件预览
-keywords: 在线,文件,预览,word,excel,ppt,office,pdf,zip,rar,压缩,文本
+keywords: kkFileView,文档,预览,在线,浏览,文本,doc,docx,Excel,pdf,txt,zip,rar,压缩
 description: kkFileView使用spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等
 ---
 打开conf目录，下面有一个application.properties配置文件，有部分配置是可以在程序运行中变更的，其他的变更需要重新启动程序
