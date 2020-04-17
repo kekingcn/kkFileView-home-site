@@ -99,13 +99,17 @@ export default {
           link: '/zh-cn/docs/home.html',
         },
         {
+          text: '在线演示',
+          link: 'https://file.keking.cn/',
+        },
+        {
           text: '部署指南',
           link: '/zh-cn/docs/production.html',
         },
         {
           text: '常见问题',
           link: '/zh-cn/docs/faq.html',
-        },
+        }
       ],
     },
     resources: {
@@ -122,6 +126,10 @@ export default {
         {
           text: '凯京技术团队官博',
           link: 'https://my.oschina.net/keking',
+        },
+        {
+          text: 'KLBLOG',
+          link: 'http://www.kailing.pub/',
         }
       ],
     },
