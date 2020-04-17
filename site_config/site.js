@@ -109,22 +109,22 @@ export default {
       ],
     },
     resources: {
-      title: '资源',
+      title: '相关站点',
       list: [
         {
-          text: '博客',
-          link: '/zh-cn/blog/index.html',
+          text: '凯京科技',
+          link: 'https://www.keking.com',
+        },
+        {
+          text: '斑马来拉',
+          link: 'https://www.banmalaila.com',
         },
         {
           text: '凯京技术团队官博',
           link: 'https://my.oschina.net/keking',
-        },
-        {
-          text: '凯京技术团队云栖社区',
-          link: 'https://yq.aliyun.com/users/2apki2y46qzly',
-        },
+        }
       ],
     },
-    copyright: 'Copyright © 2019 凯京科技',
+    copyright: 'Copyright © 2020 凯京科技',
   },
 };

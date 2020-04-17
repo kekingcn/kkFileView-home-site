@@ -62,8 +62,9 @@ export default {
       // desc: <span>如下</span>,
       list: [
         '/img/users_keking.png',
+        '/img/banmalaila.svg',
         '/img/users_tbc.png',
-        '/img/users_yzlink.png',
+        '/img/users_yzlink.png'
       ],
     },
   },
