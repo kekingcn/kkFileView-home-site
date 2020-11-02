@@ -19,36 +19,50 @@ description: kkFileView使用spring boot搭建，易上手和部署，基本支�
 | =    | URL 中指定参数的值           | %3D    |
 
 ## 1. 普通文件下载url预览
+
 ```javascript
 var url = 'http://127.0.0.1:8080/file/test.txt'; //要预览文件的访问地址
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 ```
+
 ## 2. http/https下载流url预览
+
 很多系统内不是直接暴露文件下载地址，而是请求通过id、code等参数到通过统一的接口，后端通过id或code等参数定位文件，再通过OutputStream输出下载，此时下载url是不带文件后缀名的，预览时需要拿到文件名，传一个参数`fullfilename=xxx.xxx`来指定文件名，示例如下
+
 ```javascript
 var originUrl = 'http://127.0.0.1:8080/filedownload?fileId=1'; //要预览文件的访问地址
 var previewUrl = originUrl + '&fullfilename=test.txt'
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previewUrl));
 ```
+
 ## 3. FTP下载url预览
+
 ### 1). FTP匿名访问
+
 如果要预览的FTP url是可以匿名访问的（不需要用户名密码），则可以直接通过下载url预览，示例如下
+
 ```javascript
 var url = 'ftp://127.0.0.1/file/test.txt'; //要预览文件的访问地址
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 ```
+
 ### 2). 非匿名访问，确定只有访问一台FTP服务器
 
-如果预览服务只访问一台FTP服务器，只需要在配置文件中 [配置FTP链接信息](config.md)  ，则可以直接通过下载url预览，示例如下
+如果预览服务只访问一台FTP服务器，只需要在配置文件中 [配置FTP链接信息](https://kkfileview.keking.cn/zh-cn/docs/config.html)  ，则可以直接通过下载url预览，示例如下
+
 ```javascript
 var url = 'ftp://127.0.0.1/file/test.txt'; //要预览文件的访问地址
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 ```
 
 ### 3).  非匿名访问，不只访问一台FTP服务器
-如果预览服务要访问多台FTP服务器，且用户名密码不一致，可以通过在url中加入用户名密码等参数预览(url参数中的优化于配置文件中的)，示例如下，
+
+如果预览服务要访问多台FTP服务器，且用户名密码不一致，可以通过在url中加入用户名密码等参数预览(url参数中的优化于配置文件中的)，示例如下
+
 ```javascript
 var originUrl = 'ftp://127.0.0.1/file/test.txt'; //要预览文件的访问地址
 var previewUrl = originUrl + '?ftp.username=xx&ftp.password=xx&ftp.control.encoding=xx';
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previewUrl));
 ```
+
+更多使用方面的问题，详见[常见问题](https://kkfileview.keking.cn/zh-cn/docs/faq.html)

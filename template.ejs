@@ -18,20 +18,29 @@
 	<script>
 		window.rootPath = '<%= rootPath %>';
   </script>
-	<script src="<%= rootPath %>/build/<%= page %>.js"></script>
+  <script src="<%= rootPath %>/build/<%= page %>.js"></script>
+  <!-- 百度统计 -->
 	<script>
 		(function(){
-				var bp = document.createElement('script');
-				var curProtocol = window.location.protocol.split(':')[0];
-				if (curProtocol === 'https') {
-						bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-				}
-				else {
-						bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-				}
-				var s = document.getElementsByTagName("script")[0];
-				s.parentNode.insertBefore(bp, s);
-		})();
-	</script>
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6a8e3100f5f05ef8329631aa24e7f404";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <!-- 友盟统计 -->
+  <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279373470'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1279373470%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 </body>
 </html>
