@@ -1,7 +1,7 @@
 ---
 title: kkFileView - 在线文件预览
-keywords: kkFileView,文档,预览,在线,浏览,文本,doc,docx,Excel,pdf,txt,zip,rar,压缩
-description: kkFileView使用spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等
+keywords: kkFileView,预览,office,vue,word,excel,ppt,pdf,zip,rar
+description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等
 ---
 当您的项目内需要预览文件时，只需要调用浏览器打开本项目的预览接口，并传入须要预览文件的url。
 
