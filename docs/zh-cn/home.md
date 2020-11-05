@@ -26,7 +26,7 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 
 ### 1. 文本预览
 
-支持所有类型的文本文档预览， 由于文本文档类型过多，无法全部枚举，默认开启的类型如下 txt,html,htm,asp,jsp,xml,json,properties,md,gitignore,log,java,py,c,cpp,sql,sh,bat,m,bas,prg,cmd
+支持所有类型的文本文档预览， 由于文本文档类型过多，无法全部枚举，默认开启的类型如下 txt,html,htm,asp,jsp,xml,json,properties,md,gitignore,log,java,py,c,cpp,sql,sh,bat,m,bas,prg,cmd  
 文本预览效果如下  
 ![文本预览效果如下](https://kkfileview.keking.cn/img/preview/preview-text.png)
 
