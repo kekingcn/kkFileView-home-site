@@ -88,7 +88,7 @@ var url = 'http://file.keking.cn/file/test.txt'; //要预览文件的访问地�
 window.open('http://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(url));
 ```
 
-### Q：使用docker部署时如果指定配置文件中的配置项目
+### Q：使用docker部署时如何指定配置文件中的配置项
 
 A：针对docker运行的用户，所有配置项可以使用设置相应的环境变量来配置  
 环境变量的KEY为[配置文件](https://gitee.com/kekingcn/file-online-preview/blob/master/jodconverter-web/src/main/config/application.properties)中每个配置项后`${}`中的KEY  
