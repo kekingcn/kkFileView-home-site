@@ -37,6 +37,17 @@ docker run -it -p 8012:8012 keking/kkfileview
 
 当您的项目内需要预览文件时，只需要调用浏览器打开本项目的预览接口，并传入须要预览文件的url，示例如下：
 
+### 3.x.x 版本  
+
+```javascript
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
+
+var url = 'http://127.0.0.1:8080/file/test.txt'; //要预览文件的访问地址
+window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(Base64.encode(previewUrl)));
+```
+
+### 2.x.x 及以下版本  
+
 ```javascript
 var url = 'http://127.0.0.1:8080/file/test.txt'; //要预览文件的访问地址
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previewUrl));

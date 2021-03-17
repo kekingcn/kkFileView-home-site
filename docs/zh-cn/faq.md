@@ -66,7 +66,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url=' + encodeURIComponent(url)
 ### Q：使用nginx代理时预览出现异常
 
 A：一般是nginx和kkFileView配置有问题  
-例如nginx的访问地址为 `http://file.keking.cn` 想要使用 `http://file.keking.cn/preview/`来做预览，kkFileView部署在内网`192.168.1.233`服务器上，需要在nginx中添加反向代理如下：
+例如nginx的访问地址为 `https://file.keking.cn` 想要使用 `https://file.keking.cn/preview/`来做预览，kkFileView部署在内网`192.168.1.233`服务器上，需要在nginx中添加反向代理如下：
 
 ```propertis
 location /preview {
@@ -78,14 +78,14 @@ location /preview {
 
 ```propertis
 server.context-path = /preview
-base.url = http://file.keking.cn/preview
+base.url = https://file.keking.cn/preview
 ```
 
 使用如下地址来访问预览页面
 
 ```javascript
-var url = 'http://file.keking.cn/file/test.txt'; //要预览文件的访问地址
-window.open('http://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(url));
+var url = 'https://file.keking.cn/file/test.txt'; //要预览文件的访问地址
+window.open('https://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(url));
 ```
 
 ### Q：使用docker部署时如何指定配置文件中的配置项
