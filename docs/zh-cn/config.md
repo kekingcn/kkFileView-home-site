@@ -93,18 +93,27 @@ window.open('https://file.keking.cn/preview/onlinePreview?url='+encodeURICompone
 说明：用来配置预览方式为多媒体（视频、音频）的文件类型  
 默认值：mp3,wav,mp4,flv
 
-### converted.file.charset
-
-说明：文件转换编码，默认根据操作系统获取，一般情况下不用改  
-默认值：从java系统属性sun.jnu.encoding获取，操作系统的默认编码  
-示例：`converted.file.charset = GBK`
-
 ### office.preview.type
 
 说明：office文件（doc、docx、ppt、pptx）、pdf 文件预览方式，默认为图片方式，预览时也有按钮相互切换，可选项：'image', 'pdf'
 
 * image: 默认预览方式，将office文件每一页后台转成图片，前台懒加载（只加载当前页面内容），推荐预览文件大且前台加载慢的时候使用
 * pdf: 统一转成pdf加一次加载，推荐内网访问，网速快时使用
+
+### office.preview.switch.disabled
+
+说明：是否关闭office预览页面上的切换开关，默认不关闭  
+默认值：false
+
+### pdf.download.disable
+
+说明：是否禁止下载转换生成的pdf文件，默认禁止  
+默认值：true
+
+### file.upload.disable
+
+说明：是否禁用演示首页文件上传，默认不禁止  
+默认值：false
 
 ### ftp.username
 

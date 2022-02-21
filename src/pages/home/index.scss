@@ -170,7 +170,7 @@ $animation5Height: 460px;
       max-width: $contentWidth;
       box-sizing: border-box;
       margin: 0 auto;
-      min-height: 500px;
+      min-height: 640px;
       padding: 0 40px;
       position: relative;
       display: flex;
@@ -199,7 +199,7 @@ $animation5Height: 460px;
         display: inline-block;
         width: calc(100% - 726px);
         min-width: 300px;
-        max-width: 400px;
+        max-width: 590px;
         h3 {
           font-family: Avenir-Heavy;
           font-size: 36px;
@@ -215,7 +215,7 @@ $animation5Height: 460px;
         }
       }
       img {
-        width: 360px;
+        width: 562px;
         margin: 0 82px;
         max-width: 100%;
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.05);

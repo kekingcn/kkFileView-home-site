@@ -13,7 +13,7 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 ### 1). 物理机或虚拟机上运行
 
 1. 从 [码云发行版本](https://gitee.com/kekingcn/file-online-preview/releases) 下载最新版发行包
-2. 解压kkFileView-2.x.x.zip包
+2. 解压kkFileView-x.x.x文件（Windows用.zip包，Linux/MacOS用.tar.gz包）
 3. 打开解压后文件夹的bin目录，运行startup脚本（Windows下以管理员身份运行`startup.bat`，Linux以root用户运行`startup.sh`）
 4. 浏览器访问本机8012端口 [http://127.0.0.1:8012](http://127.0.0.1:8012) 即可看到项目演示用首页
 
@@ -37,7 +37,7 @@ docker run -it -p 8012:8012 keking/kkfileview
 
 当您的项目内需要预览文件时，只需要调用浏览器打开本项目的预览接口，并传入须要预览文件的url，示例如下：
 
-### 3.x.x 版本  
+### 3.x.x 及以上版本  
 
 ```javascript
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>

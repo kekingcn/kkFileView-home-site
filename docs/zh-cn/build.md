@@ -20,11 +20,11 @@ git clone https://gitee.com/kekingcn/file-online-preview.git
 
 ```bash
 cd file-online-preview
-mvn clean package -DskipTests -Prelease
+mvn clean package -DskipTests
 ```
 
 ### 3. 使用docker构建镜像
 
 ```bash
-docker build -t keking/kkfileview:v2.2.1 .
+docker build -t keking/kkfileview:v4.0.0 .
 ```

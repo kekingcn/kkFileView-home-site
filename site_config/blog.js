@@ -59,6 +59,30 @@ export default {
     postsTitle: '所有文章',
     list: [
       {
+        title: '4.0.0版本发布',
+        author: '凯京科技',
+        dateStr: 'Jul 6th 2021',
+        desc: 'kkFileView v4.0.0 发布，文件文档在线预览解决方案',
+        link: 'https://www.oschina.net/news/149206/kkfileview-4-0-released',
+        target: '_blank',
+      },
+      {
+        title: '3.6.0版本发布',
+        author: '凯京科技',
+        dateStr: 'Jun 17th 2021',
+        desc: 'kkFileView 文件预览 ofd 支持版发布',
+        link: 'https://www.oschina.net/news/146438/kkfileview-3-6-0-released',
+        target: '_blank',
+      },
+      {
+        title: '3.5.0版本发布',
+        author: '凯京科技',
+        dateStr: 'Mar 19th 2021',
+        desc: 'kkFileView 文件预览 v3.5 性能升级版发布',
+        link: 'https://www.oschina.net/news/133737/kkfileview-3-5-released',
+        target: '_blank',
+      },
+      {
         title: '3.3.1版本发布',
         author: '凯京科技',
         dateStr: 'Jan 28th 2021',
