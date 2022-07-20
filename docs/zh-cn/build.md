@@ -24,7 +24,11 @@ mvn clean package -DskipTests
 ```
 
 ### 3. 使用docker构建镜像
+1. 先执行位于`docker/kkfileview-jdk/Dockerfile`文件，构建基础镜像（构建命令参考`docker build.txt`文件）
 
+2. 再执行项目根目录下的`Dockerfile`文件构建kkfileview镜像
 ```bash
-docker build -t keking/kkfileview:v4.0.0 .
+docker build -t keking/kkfileview:v4.1.0 .
 ```
+
+说明：通过两层缓存，可以非常有效的加快，日常docker镜像构建，无需每次重复安装ubuntu环境、jdk环境、libreoffice环境。

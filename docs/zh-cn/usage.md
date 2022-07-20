@@ -122,4 +122,28 @@ var previewUrl = originUrl + '?ftp.username=xx&ftp.password=xx&ftp.control.encod
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previewUrl));
 ```
 
+## 4. 加密office预览
+预览加密office效果如下：
+
+![加密office预览1](../../img/usage/protected-office-1.png)
+
+输入密码后正常预览office文件：
+
+![加密office预览2](../../img/usage/protected-office-2.png)
+
+密码输入错误提示：
+
+![加密office预览3](../../img/usage/protected-office-3.png)
+
+### 加密office预览缓存
+由于加密office存在文档保密性，应该区分用户进行缓存，而不是全平台预览一次后，后续用户不需要输入密码即可查看，因此加密office若为收到 `userToken` 参数将不缓存。
+
+缓存加密office `userToken` 请求示例：
+
+```url
+http://192.168.40.19:8012/onlinePreview?url=aHR0cDovLzE5Mi4xNjguNDAuMTk6ODAxMi9kZW1vL%2BWKoOWvhndvcmQuZG9jeA%3D%3D&userToken=9527&filePassword=123456
+```
+- `userToken`：需前端在发起预览文件时主动带上此参数（基于`userToken`进行转码结果缓存）
+- `filePassword`：当用户输入密码后此参数会自动带上（可忽略）
+
 更多使用方面的问题，详见[常见问题](https://kkfileview.keking.cn/zh-cn/docs/faq.html)
