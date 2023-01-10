@@ -19,9 +19,9 @@ export default {
       ],
     },
     introduction: {
-      title: '官方QQ交流群',
-      desc: '本群不局限于讨论以本项目的问题，spring boot，spring cloud，dubbo，motan以及分布式，微服务相关问题都可以热聊起来',
-      img: '/img/qq.png',
+      title: '官方开源社群',
+      desc: '本社群不局限于讨论以本项目的问题，spring boot，spring cloud，dubbo，motan以及分布式，微服务相关问题都可以热聊起来',
+      img: '/img/zsxq.png',
     },
     features: {
       title: '特性一览',

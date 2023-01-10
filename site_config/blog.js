@@ -59,6 +59,14 @@ export default {
     postsTitle: '所有文章',
     list: [
       {
+        title: '4.1.0版本发布',
+        author: '陈精华',
+        dateStr: 'Dec 14th 2022',
+        desc: 'kkFileView 4.1.0 版本发布，开源在线文件预览解决方案',
+        link: 'https://www.oschina.net/news/221470/kkfileview-4-1-0-released',
+        target: '_blank',
+      },
+      {
         title: '4.0.0版本发布',
         author: '凯京科技',
         dateStr: 'Jul 6th 2021',

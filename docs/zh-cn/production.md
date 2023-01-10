@@ -6,7 +6,7 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 ## 1. 环境要求
 
 1. Java: 1.8+
-2. OpenOffice或LiberOffice(Windows下已内置，CentOS或Ubuntu下会自动下载安装，MacOS下需要自行安装)
+2. LibreOffice或OpenOffice(Windows下已内置，CentOS或Ubuntu下会自动下载安装，MacOS下需要自行安装)
 
 ## 2. 部署运行
 
@@ -19,19 +19,24 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 
 ### 2). Docker容器环境环境运行
 
-* 拉取镜像
+#### 拉取镜像
 
 ```bash
-docker pull keking/kkfileview
+# 网络环境方便访问docker中央仓库
+docker pull keking/kkfileview:4.1.0
+
+# 网络环境不方便访问docker中央仓库
+wget http://kkfileview.keking.cn/kkFileView-4.1.0-docker.tar
+docker load -i kkFileView-4.1.0-docker.tar
 ```
 
-* 运行
+#### 运行
 
 ```bash
-docker run -it -p 8012:8012 keking/kkfileview
+docker run -it -p 8012:8012 keking/kkfileview:4.1.0
 ```
 
-* 浏览器访问容器8012端口 `http://xxx.xxx.xxx.xxx:8012` 即可看到项目演示用首页
+浏览器访问容器8012端口 `http://127.0.0.1:8012` 即可看到项目演示用首页
 
 ## 3. 项目接入使用
 
