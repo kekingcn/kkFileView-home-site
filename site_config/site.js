@@ -2,7 +2,7 @@
 export default {
   rootPath: '', // 发布到服务器的根目录，需以/开头但不能有尾/，如果只有/，请填写空字符串
   port: 8080, // 本地开发服务器的启动端口
-  domain: 'kkfileview.keking.cn', // 站点部署域名，无需协议和path等
+  domain: 'www.kkview.cn', // 站点部署域名，无需协议和path等
   defaultSearch: 'baidu', // 默认搜索引擎，baidu或者google
   defaultLanguage: 'zh-cn',
   'en-us': {
@@ -62,7 +62,7 @@ export default {
         // },
       ],
     },
-    copyright: 'Copyright © 2019 Keking',
+    copyright: 'Copyright © 2023 KK开源社区 沪ICP备2023002907号-1',
   },
   'zh-cn': {
     pageMenu: [
@@ -133,6 +133,7 @@ export default {
         }
       ],
     },
-    copyright: 'Copyright © 2020 凯京科技',
+    copyright: 'Copyright © 2023 KK开源社区     沪ICP备2023002907号-1',
   },
 };
+
