@@ -50,11 +50,11 @@ export default {
           },
           {
             title: '常见问题',
-            link: '/zh-cn/docs/faq.html'
+            link: '/zh-cn/docs/faq.html',
           },
           {
             title: '编译指南',
-            link: '/zh-cn/docs/build.html'
+            link: '/zh-cn/docs/build.html',
           },
           // {
           //   title: '目录',

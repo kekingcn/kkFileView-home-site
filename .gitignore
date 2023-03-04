@@ -1,6 +1,6 @@
 *.iml
 node_modules/
-/build/
+/dist/
 /en-us/
 /zh-cn/
 /md_json/

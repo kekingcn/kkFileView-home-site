@@ -90,7 +90,6 @@
       box-sizing: border-box;
       width: 24px;
       height: 24px;
-      display: none !important;
       line-height: 20px;
       margin-top: $headerHeight / 2 - 12px;
       margin-right: 40px;
@@ -102,17 +101,16 @@
       opacity: 0.6;
       &:hover {
         opacity: 1;
-      }
+      };
+      display: none
     }
     .language-switch-primary {
       border: 1px solid #FFF;
       color: #FFF;
-      display: none !important;
     }
     .language-switch-normal {
       border: 1px solid #333;
       color: #333;
-      display: none !important;
     }
     .search {
       float: right;

@@ -65,7 +65,7 @@ export default {
         '/img/banmalaila.svg',
         '/img/users_tbc.png',
         '/img/users_yzlink.png',
-        '/img/klblog.gif'
+        '/img/klblog.gif',
       ],
     },
   },
@@ -103,8 +103,8 @@ export default {
           img: '/img/feature_loadbalances.png',
           title: 'feature2',
           content: 'feature description',
-        }
-      ]
+        },
+      ],
     },
     start: {
       title: 'Quick start',
@@ -120,7 +120,7 @@ export default {
       desc: <span>some description</span>,
       list: [
         '/img/users_alibaba.png',
-        '/img/users_alibaba.png'
+        '/img/users_alibaba.png',
       ],
     },
   },

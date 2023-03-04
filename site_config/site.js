@@ -2,7 +2,7 @@
 export default {
   rootPath: '', // 发布到服务器的根目录，需以/开头但不能有尾/，如果只有/，请填写空字符串
   port: 8080, // 本地开发服务器的启动端口
-  domain: 'www.kkview.cn', // 站点部署域名，无需协议和path等
+  domain: 'kkview.cn', // 站点部署域名，无需协议和path等
   defaultSearch: 'baidu', // 默认搜索引擎，baidu或者google
   defaultLanguage: 'zh-cn',
   'en-us': {
@@ -62,7 +62,7 @@ export default {
         // },
       ],
     },
-    copyright: 'Copyright © 2023 KK开源社区 沪ICP备2023002907号-1',
+    copyright: 'Copyright © 2023 KK开源社区',
   },
   'zh-cn': {
     pageMenu: [
@@ -100,7 +100,7 @@ export default {
         },
         {
           text: '在线演示',
-          link: 'https://file.keking.cn/',
+          link: 'https://kkview.cn/preview',
         },
         {
           text: '部署指南',
@@ -109,7 +109,7 @@ export default {
         {
           text: '常见问题',
           link: '/zh-cn/docs/faq.html',
-        }
+        },
       ],
     },
     resources: {
@@ -130,10 +130,10 @@ export default {
         {
           text: 'KLBLOG',
           link: 'http://www.kailing.pub/',
-        }
+        },
       ],
     },
-    copyright: 'Copyright © 2023 KK开源社区     沪ICP备2023002907号-1',
+    copyright: 'Copyright © 2023 KK开源社区',
   },
 };
 

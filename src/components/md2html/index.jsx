@@ -1,23 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import { scroller } from 'react-scroll';
-import 'whatwg-fetch'; // fetch polyfill
 import path from 'path';
-import Language from '../../components/language';
-import Header from '../../components/header';
-import Bar from '../../components/bar';
-import Sidemenu from '../../components/sidemenu';
-import Footer from '../../components/footer';
-import docsConfig from '../../../site_config/docs';
+import 'whatwg-fetch'; // fetch polyfill
+import siteConfig from '../../../site_config/site';
 import './index.scss';
 
-// 锚点正则
 const anchorReg = /^#[^/]/;
 // 相对地址正则，包括./、../、直接文件夹名称开头、直接文件开头
 const relativeReg = /^((\.{1,2}\/)|([\w-]+[/.]))/;
 
-class Documentation extends Language {
-
+const Md2Html = ComposeComponent => class extends ComposeComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +18,7 @@ class Documentation extends Language {
 
   componentDidMount() {
     // 通过请求获取生成好的json数据，静态页和json文件在同一个目录下
-    fetch(window.location.pathname.replace(/\.html$/i, '.json'))
+    fetch(`${window.location.pathname.replace(/\.html$/i, '.json')}?t=${new Date().getTime()}`)
       .then(res => res.json())
       .then((md) => {
         this.setState({
@@ -43,7 +34,6 @@ class Documentation extends Language {
           duration: 1000,
           smooth: 'easeInOutQuint',
         });
-        location.hash = `#${id}`;
       }
     });
   }
@@ -51,19 +41,11 @@ class Documentation extends Language {
   componentDidUpdate() {
     this.handleRelativeLink();
     this.handleRelativeImg();
-    const hash = location.hash;
-    if (hash) {
-      const id = hash.replace(/^#/g, '');
-      scroller.scrollTo(id, {
-        duration: 1000,
-        smooth: 'easeInOutQuint',
-      });
-    }
+    this.handleDocsLatestLink();
   }
 
   handleRelativeLink() {
     const language = this.getLanguage();
-    // 获取当前文档所在文件系统中的路径
     // rootPath/en-us/docs/dir/hello.html => /docs/en-us/dir
     const splitPart = window.location.pathname.replace(`${window.rootPath}/${language}`, '').split('/').slice(0, -1);
     const filePath = splitPart.join('/');
@@ -79,7 +61,6 @@ class Documentation extends Language {
 
   handleRelativeImg() {
     const language = this.getLanguage();
-    // 获取当前文档所在文件系统中的路径
     // rootPath/en-us/docs/dir/hello.html => /docs/en-us/dir
     const splitPart = window.location.pathname.replace(`${window.rootPath}/${language}`, '').split('/').slice(0, -1);
     splitPart.splice(2, 0, language);
@@ -94,34 +75,18 @@ class Documentation extends Language {
     });
   }
 
-  render() {
+  handleDocsLatestLink() {
     const language = this.getLanguage();
-    const dataSource = docsConfig[language];
-    const __html = this.props.__html || this.state.__html;
-    return (
-      <div className="documentation-page">
-        <Header
-          currentKey="docs"
-          type="normal"
-          logo="/img/logo.png"
-          language={language}
-          onLanguageChange={this.onLanguageChange}
-        />
-        <Bar img="/img/system/docs.png" text={dataSource.barText} />
-        <section className="content-section">
-          <Sidemenu dataSource={dataSource.sidemenu} />
-          <div
-            className="doc-content markdown-body"
-            ref={(node) => { this.markdownContainer = node; }}
-            dangerouslySetInnerHTML={{ __html }}
-          />
-        </section>
-        <Footer logo="/img/logo.png" language={language} />
-      </div>
-    );
+    if (!siteConfig.docsLatest || !window.location.pathname.includes(`${language}/docs/latest`)) return;
+    // rootPath/en-us/docs/1.3.5/user_doc/cluster-deployment.html => rootPath/en-us/docs/latest/user_doc/cluster-deployment.html
+    const alinks = Array.from(this.markdownContainer.querySelectorAll('a'));
+    alinks.forEach((alink) => {
+      const href = alink.getAttribute('href');
+      if (typeof href === 'string' && href.includes(`docs/${siteConfig.docsLatest}`)) {
+        alink.href = href.replace(`docs/${siteConfig.docsLatest}`, 'docs/latest');
+      }
+    });
   }
-}
+};
 
-document.getElementById('root') && ReactDOM.render(<Documentation />, document.getElementById('root'));
-
-export default Documentation;
+export default Md2Html;
