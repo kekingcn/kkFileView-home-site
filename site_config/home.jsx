@@ -7,12 +7,22 @@ export default {
       briefIntroduction: 'kkFileView为文件文档在线预览解决方案，该项目使用流行的spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,xls,xlsx,ppt,pptx,pdf,txt,zip,rar,图片,视频,音频等等',
       buttons: [
         {
-          text: '立即开始',
+          text: '查看文档',
           link: '/zh-cn/docs/home.html',
           type: 'primary',
         },
         {
-          text: '查看码云',
+          text: '在线体验',
+          link: 'https://kkview.cn/preview',
+          type: 'primary',
+        },
+        {
+          text: 'Github',
+          link: 'https://github.com/kekingcn/kkFileView',
+          type: 'normal',
+        },
+        {
+          text: 'Gitee',
           link: 'https://gitee.com/kekingcn/file-online-preview',
           type: 'normal',
         },
@@ -78,6 +88,16 @@ export default {
           text: 'Quick Start',
           link: '/en-us/docs/demo1.html',
           type: 'primary',
+        },
+        {
+          text: 'Online Demo',
+          link: 'https://kkview.cn/preview',
+          type: 'primary',
+        },
+        {
+          text: 'View on Github',
+          link: 'https://gitee.com/kekingcn/file-online-preview',
+          type: 'normal',
         },
         {
           text: 'View on Github',

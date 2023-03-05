@@ -26,7 +26,7 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 docker pull keking/kkfileview:4.1.0
 
 # 网络环境不方便访问docker中央仓库
-wget http://kkfileview.keking.cn/kkFileView-4.1.0-docker.tar
+wget https://kkview.cn/resource/kkFileView-4.1.0-docker.tar
 docker load -i kkFileView-4.1.0-docker.tar
 ```
 
@@ -58,4 +58,4 @@ var url = 'http://127.0.0.1:8080/file/test.txt'; //要预览文件的访问地�
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previewUrl));
 ```
 
-详细使用说明见 [使用指南](https://kkfileview.keking.cn/zh-cn/docs/usage.html)
+详细使用说明见 [使用指南](https://kkview.cn/zh-cn/docs/usage.html)

@@ -82,7 +82,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 
 ### 2). 非匿名访问，确定只有访问一台FTP服务器
 
-如果预览服务只访问一台FTP服务器，只需要在配置文件中 [配置FTP链接信息](https://kkfileview.keking.cn/zh-cn/docs/config.html)  ，则可以直接通过下载url预览，示例如下
+如果预览服务只访问一台FTP服务器，只需要在配置文件中 [配置FTP链接信息](https://kkview.cn/zh-cn/docs/config.html)  ，则可以直接通过下载url预览，示例如下
 
 #### 3.x.x 版本  
 
@@ -122,4 +122,4 @@ var previewUrl = originUrl + '?ftp.username=xx&ftp.password=xx&ftp.control.encod
 window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previewUrl));
 ```
 
-更多使用方面的问题，详见[常见问题](https://kkfileview.keking.cn/zh-cn/docs/faq.html)
+更多使用方面的问题，详见[常见问题](https://kkview.cn/zh-cn/docs/faq.html)

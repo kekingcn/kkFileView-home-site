@@ -28,12 +28,12 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 
 支持所有类型的文本文档预览， 由于文本文档类型过多，无法全部枚举，默认开启的类型如下 txt,html,htm,asp,jsp,xml,json,properties,md,gitignore,log,java,py,c,cpp,sql,sh,bat,m,bas,prg,cmd  
 文本预览效果如下  
-![文本预览效果如下](https://kkfileview.keking.cn/img/preview/preview-text.png)
+![文本预览效果如下](https://kkview.cn/img/preview/preview-text.png)
 
 ### 2. 图片预览
 
 支持jpg，jpeg，png，gif等图片预览（翻转，缩放，镜像），预览效果如下  
-![图片预览](https://kkfileview.keking.cn/img/preview/preview-image.png)  
+![图片预览](https://kkview.cn/img/preview/preview-image.png)  
 
 ### 3. word文档预览
 
@@ -42,53 +42,53 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 * 图片预览：word文件大，前台加载整个pdf过慢  
 * pdf预览：内网访问，加载pdf快  
 图片预览模式预览效果如下  
-![word文档预览1](https://kkfileview.keking.cn/img/preview/preview-doc-image.png)  
+![word文档预览1](https://kkview.cn/img/preview/preview-doc-image.png)  
 pdf预览模式预览效果如下  
-![word文档预览2](https://kkfileview.keking.cn/img/preview/preview-doc-pdf.png)  
+![word文档预览2](https://kkview.cn/img/preview/preview-doc-pdf.png)  
 
 ### 4. ppt文档预览
 
 支持ppt，pptx文档预览，和word文档一样，有两种预览模式  
 图片预览模式预览效果如下  
-![ppt文档预览1](https://kkfileview.keking.cn/img/preview/preview-ppt-image.png)  
+![ppt文档预览1](https://kkview.cn/img/preview/preview-ppt-image.png)  
 pdf预览模式预览效果如下  
-![ppt文档预览2](https://kkfileview.keking.cn/img/preview/preview-ppt-pdf.png)  
+![ppt文档预览2](https://kkview.cn/img/preview/preview-ppt-pdf.png)  
 
 ### 5. pdf文档预览
 
 支持pdf文档预览，和word文档一样，有两种预览模式  
 图片预览模式预览效果如下  
-![pdf文档预览1](https://kkfileview.keking.cn/img/preview/preview-pdf-image.png)  
+![pdf文档预览1](https://kkview.cn/img/preview/preview-pdf-image.png)  
 pdf预览模式预览效果如下  
-![pdf文档预览2](https://kkfileview.keking.cn/img/preview/preview-pdf-pdf.png)  
+![pdf文档预览2](https://kkview.cn/img/preview/preview-pdf-pdf.png)  
 
 ### 6. excel文档预览
 
 支持xls，xlsx文档预览，预览效果如下  
-![excel文档预览](https://kkfileview.keking.cn/img/preview/preview-xls.png)  
-ps，如碰到excel预览乱码问题，可参考 [预览乱码](https://kkfileview.keking.cn/zh-cn/docs/faq.html)  
+![excel文档预览](https://kkview.cn/img/preview/preview-xls.png)  
+ps，如碰到excel预览乱码问题，可参考 [预览乱码](https://kkview.cn/zh-cn/docs/faq.html)  
 
 ### 7. 压缩文件预览
 
 支持zip,rar,jar,tar,gzip等压缩包，预览效果如下  
-![压缩文件预览1](https://kkfileview.keking.cn/img/preview/preview-zip.png)  
+![压缩文件预览1](https://kkview.cn/img/preview/preview-zip.png)  
 可点击压缩包中的文件名，直接预览文件，预览效果如下  
-![压缩文件预览2](https://kkfileview.keking.cn/img/preview/preview-zip-inner.png)  
+![压缩文件预览2](https://kkview.cn/img/preview/preview-zip-inner.png)  
 
 ### 8. 多媒体文件预览
 
 理论上支持所有的视频、音频文件，由于无法枚举所有文件格式，默认开启的类型如下  
 mp3,wav,mp4,flv  
-如有没有未覆盖全面，可通过配置文件[指定多媒体类型](https://kkfileview.keking.cn/zh-cn/docs/config.html)  
+如有没有未覆盖全面，可通过配置文件[指定多媒体类型](https://kkview.cn/zh-cn/docs/config.html)  
 视频预览效果如下  
-![多媒体文件预览1](https://kkfileview.keking.cn/img/preview/preview-video.png)  
+![多媒体文件预览1](https://kkview.cn/img/preview/preview-video.png)  
 音频预览效果如下  
-![多媒体文件预览2](https://kkfileview.keking.cn/img/preview/preview-audio.png)  
+![多媒体文件预览2](https://kkview.cn/img/preview/preview-audio.png)  
 
 ### 9. CAD文档预览
 
 支持CAD dwg文档预览，和word文档一样，有两种预览模式  
 图片预览模式预览效果如下  
-![cad文档预览1](https://kkfileview.keking.cn/img/preview/preview-cad-image.png)  
+![cad文档预览1](https://kkview.cn/img/preview/preview-cad-image.png)  
 pdf预览模式预览效果如下  
-![cad文档预览2](https://kkfileview.keking.cn/img/preview/preview-cad-pdf.png)
+![cad文档预览2](https://kkview.cn/img/preview/preview-cad-pdf.png)

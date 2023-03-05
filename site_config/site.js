@@ -5,6 +5,7 @@ export default {
   domain: 'kkview.cn', // 站点部署域名，无需协议和path等
   defaultSearch: 'baidu', // 默认搜索引擎，baidu或者google
   defaultLanguage: 'zh-cn',
+  copyToDist: ['img'],
   'en-us': {
     pageMenu: [
       {
