@@ -101,7 +101,7 @@ export default {
         },
         {
           text: '在线演示',
-          link: 'https://kkview.cn/preview',
+          link: 'https://file.kkview.cn',
         },
         {
           text: '部署指南',

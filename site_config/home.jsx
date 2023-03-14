@@ -14,7 +14,7 @@ export default {
         },
         {
           text: '在线体验',
-          link: 'https://kkview.cn/preview',
+          link: 'https://file.kkview.cn',
           type: 'primary',
           target: '_blank',
         },
@@ -96,7 +96,7 @@ export default {
         },
         {
           text: 'Online Demo',
-          link: 'https://kkview.cn/preview',
+          link: 'https://file.kkview.cn',
           type: 'primary',
           target: '_blank',
         },
