@@ -20,7 +20,7 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 
 ## 1. 普通文件下载url预览
 
-### 3.x.x 版本  
+### 3.x.x 及以上版本  
 
 ```javascript
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
@@ -40,7 +40,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 
 很多系统内不是直接暴露文件下载地址，而是请求通过id、code等参数到通过统一的接口，后端通过id或code等参数定位文件，再通过OutputStream输出下载，此时下载url是不带文件后缀名的，预览时需要拿到文件名，传一个参数`fullfilename=xxx.xxx`来指定文件名，示例如下
 
-### 3.x.x 版本  
+### 3.x.x 及以上版本  
 
 ```javascript
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
@@ -64,7 +64,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(previe
 
 如果要预览的FTP url是可以匿名访问的（不需要用户名密码），则可以直接通过下载url预览，示例如下
 
-#### 3.x.x 版本  
+#### 3.x.x 及以上版本  
 
 ```javascript
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
@@ -84,7 +84,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 
 如果预览服务只访问一台FTP服务器，只需要在配置文件中 [配置FTP链接信息](https://kkview.cn/zh-cn/docs/config.html)  ，则可以直接通过下载url预览，示例如下
 
-#### 3.x.x 版本  
+#### 3.x.x 及以上版本  
 
 ```javascript
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
@@ -104,7 +104,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url='+encodeURIComponent(url));
 
 如果预览服务要访问多台FTP服务器，且用户名密码不一致，可以通过在url中加入用户名密码等参数预览(url参数中的优化于配置文件中的)，示例如下
 
-#### 3.x.x 版本  
+#### 3.x.x 及以上版本 
 
 ```javascript
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>

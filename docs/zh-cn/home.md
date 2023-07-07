@@ -87,6 +87,9 @@ pdf预览模式预览效果如下
 ![excel文档预览](https://kkview.cn/img/preview/preview-xls.png)  
 ps，如碰到excel预览乱码问题，可参考 [预览乱码](https://kkview.cn/zh-cn/docs/faq.html)  
 
+另xlsx还支持web预览模式(4.3.0版本起默认启用)，预览效果如下  
+![excel文档预览web模式](https://kkview.cn/img/preview/preview-xlsx-web.png)  
+
 ### 7. 压缩文件预览
 
 支持zip,rar,jar,tar,gzip等压缩包，预览效果如下  
@@ -111,3 +114,23 @@ mp3,wav,mp4,flv
 ![cad文档预览1](https://kkview.cn/img/preview/preview-cad-image.png)  
 pdf预览模式预览效果如下  
 ![cad文档预览2](https://kkview.cn/img/preview/preview-cad-pdf.png)
+
+### 10. 流程图bpmn文件预览
+
+支持bpmn流程图文件预览，预览效果如下  
+![流程图预览](https://kkview.cn/img/preview/preview-bpmn.png)  
+
+### 11.  3D模型文件文件预览
+
+支持 obj, 3ds, stl, ply, gltf, glb, off, 3dm, fbx, dae, wrl, 3mf, ifc, brep, step, iges, fcstd, bim 等3D模型文件预览，预览效果如下  
+![3D模型预览](https://kkview.cn/img/preview/preview-3ds.png)  
+
+### 12. dcm医疗数位影像预览
+
+支持dcm医疗数位影像预览，预览效果如下  
+![流程图预览](https://kkview.cn/img/preview/preview-dcm.png)  
+
+### 13. drawio流程图预览
+
+支持drawio流程图预览，预览效果如下  
+![流程图预览](https://kkview.cn/img/preview/preview-drawio.png)  

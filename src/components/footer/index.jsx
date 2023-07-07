@@ -43,7 +43,9 @@ class Footer extends React.Component {
             </dl>
             </div>
           </div>
-          <div className="copyright"><span>{dataSource.copyright}</span></div>
+          <div className="copyright">
+            <span>{dataSource.copyright}&nbsp;&nbsp;<a href="https://beian.miit.gov.cn">沪ICP备2023002907号-1</a></span>
+          </div>
         </div>
       </footer>
     );

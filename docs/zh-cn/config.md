@@ -7,11 +7,11 @@ description: kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和
 
 ## 不可动态配置，需要重启生效部分
 
-### server.context-path
+### server.servlet.context-path
 
 说明：kkFileView运行时tomcat的ServletContext
 默认值：`/`
-示例：`server.context-path = /preview`
+示例：`server.servlet.context-path = /preview`
 
 ### file.dir
 
@@ -57,7 +57,7 @@ spring.redisson.password = xxxxxx
 示例：`base.url = https://file.keking.cn/preview`  
 例如nginx的访问地址为 `https://file.keking.cn` 想要使用 `https://file.keking.cn/preview/`来做预览，kkFileView部署在内网`192.168.1.233`服务器上，需要在nginx中添加反向代理如下
 
-```propertis
+```properties
 location /preview {
     proxy_pass 192.168.1.233:8012;
 }
@@ -65,16 +65,18 @@ location /preview {
 
 修改kkFileView的配置文件如下两项
 
-```propertis
-server.context-path = /preview
+```properties
+server.servlet.context-path = /preview
 base.url = https://file.keking.cn/preview
 ```
 
 使用如下地址来访问预览页面
 
 ```javascript
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
+
 var url = 'https://file.keking.cn/file/test.txt'; //要预览文件的访问地址
-window.open('https://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(url));
+window.open('https://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(Base64.encode(url)));
 ```
 
 ### trust.host

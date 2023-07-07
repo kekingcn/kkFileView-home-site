@@ -59,6 +59,30 @@ export default {
     postsTitle: '所有文章',
     list: [
       {
+        title: '4.3.0版本发布',
+        author: '陈精华',
+        dateStr: 'Jul 5th 2023',
+        desc: '万能在线预览 kkFileView v4.3.0 正式发布',
+        link: 'https://www.oschina.net/news/247981/kkfileview-4-3-0-released',
+        target: '_blank',
+      },
+      {
+        title: '4.2.1版本发布',
+        author: 'KL博主',
+        dateStr: 'Apr 18th 2023',
+        desc: 'kkFileView v4.2.1 发布，dwg 文件预览修复版',
+        link: 'https://www.oschina.net/news/237402/kkfileview-4-2-1-released',
+        target: '_blank',
+      },
+      {
+        title: '4.2.0版本发布',
+        author: 'KL博主',
+        dateStr: 'Apr 13th 2023',
+        desc: '万能在线预览 kkFileView v4.2.0 正式发布',
+        link: 'https://www.oschina.net/news/236746/kkfileview-4-2-0-released',
+        target: '_blank',
+      },
+      {
         title: '4.1.0版本发布',
         author: '陈精华',
         dateStr: 'Dec 14th 2022',

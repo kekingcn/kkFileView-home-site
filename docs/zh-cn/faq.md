@@ -68,7 +68,7 @@ window.open('http://127.0.0.1:8012/onlinePreview?url=' + encodeURIComponent(url)
 A：一般是nginx和kkFileView配置有问题  
 例如nginx的访问地址为 `https://file.keking.cn` 想要使用 `https://file.keking.cn/preview/`来做预览，kkFileView部署在内网`192.168.1.233`服务器上，需要在nginx中添加反向代理如下：
 
-```propertis
+```properties
 location /preview {
     proxy_pass 192.168.1.233:8012;
 }
@@ -76,16 +76,18 @@ location /preview {
 
 修改kkFileView的配置文件如下两项
 
-```propertis
-server.context-path = /preview
+```properties
+server.servlet.context-path = /preview
 base.url = https://file.keking.cn/preview
 ```
 
 使用如下地址来访问预览页面
 
 ```javascript
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
+
 var url = 'https://file.keking.cn/file/test.txt'; //要预览文件的访问地址
-window.open('https://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(url));
+window.open('https://file.keking.cn/preview/onlinePreview?url='+encodeURIComponent(Base64.encode(url)));
 ```
 
 ### Q：使用docker部署时如何指定配置文件中的配置项
@@ -95,7 +97,7 @@ A：针对docker运行的用户，所有配置项可以使用设置相应的环�
 例如，使用docker运行要指定`base.url`为`http://file.keking.cn`，docker运行命令如下
 
 ```sh
-docker run -it -d -p 8012:8012 -e BASE_URL="http://file.keking.cn" keking/kkfileview:v2.2.1
+docker run -it -d -p 8012:8012 -e KK_BASE_URL="http://file.keking.cn" keking/kkfileview:v2.2.1
 ```
 
 ### Q：使用内网预览时没有问题，但是使用外网预览有问题
