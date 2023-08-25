@@ -26,5 +26,5 @@ mvn clean package -DskipTests
 ### 3. 使用docker构建镜像
 
 ```bash
-docker build -t keking/kkfileview:v4.0.0 .
+docker build -t keking/kkfileview:v4.3.0 .
 ```

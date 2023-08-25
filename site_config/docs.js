@@ -36,26 +36,26 @@ export default {
             title: '概述',
             link: '/zh-cn/docs/home.html',
           },
-          {
-            title: '部署指南',
-            link: '/zh-cn/docs/production.html',
-          },
-          {
-            title: '使用指南',
-            link: '/zh-cn/docs/usage.html',
-          },
-          {
-            title: '配置说明',
-            link: '/zh-cn/docs/config.html',
-          },
-          {
-            title: '常见问题',
-            link: '/zh-cn/docs/faq.html',
-          },
-          {
-            title: '编译指南',
-            link: '/zh-cn/docs/build.html',
-          },
+          // {
+          //   title: '部署指南',
+          //   link: '/zh-cn/docs/production.html',
+          // },
+          // {
+          //   title: '使用指南',
+          //   link: '/zh-cn/docs/usage.html',
+          // },
+          // {
+          //   title: '配置说明',
+          //   link: '/zh-cn/docs/config.html',
+          // },
+          // {
+          //   title: '常见问题',
+          //   link: '/zh-cn/docs/faq.html',
+          // },
+          // {
+          //   title: '编译指南',
+          //   link: '/zh-cn/docs/build.html',
+          // },
           // {
           //   title: '目录',
           //   opened: true,

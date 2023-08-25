@@ -8,15 +8,37 @@
 	<meta name="description" content="kkFileView官网 - kkFileView使用Spring Boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等" />
 </head>
 <body>
+  正在重定向至首页：<a id="redirectUrl" href=""></a> &nbsp;倒计时：<span id="countdown">3</span>秒
   <script src="//unpkg.com/js-cookie@2.2.1/src/js.cookie.js"></script>
-	<script>
+  <script>
     window.rootPath = '<%= rootPath %>';
     window.defaultLanguage = '<%= defaultLanguage %>';
     var lang = Cookies.get('docsite_language');
     if (!lang) {
       lang = '<%= defaultLanguage %>';
     }
-    window.location = window.rootPath + '/' + lang + '/index.html';
+    var redirectUrl = (window.rootPath === '' ? '/' : '') + lang + '/index.html';
+    document.getElementById("redirectUrl").innerText = redirectUrl;
+    document.getElementById("redirectUrl").href = redirectUrl;
+
+    // 百度统计
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d06607a756285735eb4e18d467599a0c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+    var counter = document.getElementById("countdown").innerText;
+    var int = setInterval(function() {
+      counter--;
+      document.getElementById("countdown").innerText = counter;
+      if (counter <= 0) {
+        window.location = redirectUrl;
+      }
+    }, 1000);
+
   </script>
 </body>
 </html>
