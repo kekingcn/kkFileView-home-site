@@ -8,6 +8,7 @@ node_modules/
 /404.html
 tmp/
 temp/
+.npmrc
 *.log
 .DS_Store
 npm-debug.log

@@ -16,9 +16,8 @@
 </head>
 <body>
   <div id="root"><%- __html %></div>
-  <script src="//unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
-  <script src="//unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
-  <script>window.rootPath = '<%= rootPath %>';</script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/react/18.2.0/umd/react.production.min.js" type="application/javascript"></script>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/react-dom/18.2.0/umd/react-dom.production.min.js" type="application/javascript"></script>  <script>window.rootPath = '<%= rootPath %>';</script>
   <%_ if (vendorJsPath) { _%>
   <script src="<%= rootPath %>/build/<%= vendorJsPath %>"></script>
   <%_ } _%>
