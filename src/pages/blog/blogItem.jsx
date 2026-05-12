@@ -1,16 +1,16 @@
 import React from 'react';
-import { autobind } from 'core-decorators';
 import { getLink } from '../../../utils';
 
 import './blogItem.scss';
 
-@autobind
 class BlogItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isHovered: false,
     };
+    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onMouseOut = this.onMouseOut.bind(this);
   }
 
   onMouseOver() {

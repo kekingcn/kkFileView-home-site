@@ -7,22 +7,12 @@
   <meta name="description" content="<%= description %>">
   <title><%= title %></title>
   <link rel="shortcut icon" href="<%= rootPath %>/img/favicon.ico"/>
-  <%_ if (vendorCssPath) { _%>
-  <link rel="stylesheet" href="<%= rootPath %>/build/<%= vendorCssPath %>">
-  <%_ } _%>
-  <%_ if (pageCssPath) { _%>
-  <link rel="stylesheet" href="<%= rootPath %>/build/<%= pageCssPath %>">
-  <%_ } _%>
 </head>
 <body>
   <div id="root"><%- __html %></div>
-  <script src="<%= rootPath %>/node_modules/react/umd/react.production.min.js" type="application/javascript"></script>
-  <script src="<%= rootPath %>/node_modules/react-dom/umd/react-dom.production.min.js" type="application/javascript"></script>  <script>window.rootPath = '<%= rootPath %>';</script>
-  <%_ if (vendorJsPath) { _%>
-  <script src="<%= rootPath %>/build/<%= vendorJsPath %>"></script>
-  <%_ } _%>
-  <%_ if (pageJsPath) { _%>
-  <script src="<%= rootPath %>/build/<%= pageJsPath %>"></script>
+  <script>window.rootPath = '<%= rootPath %>';</script>
+  <%_ if (entryPath) { _%>
+  <script type="module" src="<%= rootPath %><%= entryPath %>"></script>
   <%_ } _%>
   <!-- 百度统计 -->
 	<script>

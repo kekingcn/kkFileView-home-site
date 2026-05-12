@@ -15,4 +15,3 @@ npm-debug.log
 .idea
 coverage
 test/docsite-project
-package-lock.json

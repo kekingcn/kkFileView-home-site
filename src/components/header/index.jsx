@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { autobind } from 'core-decorators';
 import siteConfig from '../../../site_config/site';
 import { getLink } from '../../../utils';
 import './index.scss';
@@ -40,7 +39,6 @@ const defaultProps = {
   onLanguageChange: noop,
 };
 
-@autobind
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -50,6 +48,13 @@ class Header extends React.Component {
       search: siteConfig.defaultSearch,
       searchValue: '',
     };
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.switchLang = this.switchLang.bind(this);
+    this.switchSearch = this.switchSearch.bind(this);
+    this.toggleSearch = this.toggleSearch.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.goSearch = this.goSearch.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {

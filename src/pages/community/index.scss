@@ -1,5 +1,6 @@
-@import '../../variables.scss';
-@import '../../reset.scss';
+@use '../../variables.scss' as *;
+@use '../../reset.scss';
+@use 'sass:math';
 
 .community-page {
   .events-section {
@@ -24,7 +25,7 @@
         width: 373px;
         height: 209px;
       }
-      @media screen and (max-width: $mobileWidth / 2) {
+      @media screen and (max-width: math.div($mobileWidth, 2)) {
         width: 320px;
         img {
           width: 320px;

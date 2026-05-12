@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const throttle = (fn, delay) => {
   let timer = null;
   return function (...args) {

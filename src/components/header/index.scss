@@ -1,4 +1,5 @@
-@import '../../variables.scss';
+@use '../../variables.scss' as *;
+@use 'sass:math';
 
 .header-container {
   position: fixed;
@@ -30,7 +31,7 @@
         display: none;
         width: 19px;
         margin-right: 40px;
-        margin-top: $headerHeight / 2 - 15px; 
+        margin-top: math.div($headerHeight, 2) - 15px; 
         cursor: pointer;
       }
     }
@@ -91,7 +92,7 @@
       width: 24px;
       height: 24px;
       line-height: 20px;
-      margin-top: $headerHeight / 2 - 12px;
+      margin-top: math.div($headerHeight, 2) - 12px;
       margin-right: 40px;
       text-align: center;
       border-radius: 2px;

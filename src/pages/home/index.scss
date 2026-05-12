@@ -1,5 +1,5 @@
-@import '../../variables.scss';
-@import '../../reset.scss';
+@use '../../variables.scss' as *;
+@use '../../reset.scss';
 
 $animation1Height: 500px;
 $animation2Height: 375px;

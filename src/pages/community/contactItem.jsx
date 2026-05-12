@@ -1,14 +1,14 @@
 import React from 'react';
-import { autobind } from 'core-decorators';
 import { getLink } from '../../../utils';
 
-@autobind
 class ContactItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       img: props.contact.img,
     };
+    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onMouseOut = this.onMouseOut.bind(this);
   }
 
   onMouseOver() {

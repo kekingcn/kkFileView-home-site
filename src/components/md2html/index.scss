@@ -1,6 +1,6 @@
-@import '../../variables.scss';
-@import '../../reset.scss';
-@import '../../markdown.scss';
+@use '../../variables.scss' as *;
+@use '../../reset.scss';
+@use '../../markdown.scss';
 
 .md2html {
   .content-section {

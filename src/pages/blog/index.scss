@@ -1,5 +1,5 @@
-@import '../../variables.scss';
-@import '../../reset.scss';
+@use '../../variables.scss' as *;
+@use '../../reset.scss';
 
 .blog-list-page {
   .blog-container {
