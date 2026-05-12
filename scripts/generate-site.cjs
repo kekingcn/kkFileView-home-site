@@ -1,10 +1,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const ejs = require('ejs');
-const yaml = require('js-yaml');
 const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
-const markdownItGithubPreamble = require('markdown-it-github-preamble');
 const markdownItFootnote = require('markdown-it-footnote');
 
 const cwd = process.cwd();
@@ -17,12 +15,10 @@ const getSiteConfigString = (key, fallback = '') => {
 };
 const rootPath = getSiteConfigString('rootPath');
 const defaultLanguage = getSiteConfigString('defaultLanguage', 'zh-cn');
+const pageMetaSource = fs.readFileSync(path.join(cwd, 'site_config/pageMeta.js'), 'utf8');
+const pageMeta = Function(`${pageMetaSource.replace('export default', 'return')}`)();
 const templatePath = path.join(cwd, 'template.ejs');
 const redirectTemplatePath = path.join(cwd, 'redirect.ejs');
-const docsiteConfigPath = path.join(cwd, 'docsite.config.yml');
-const docsiteConfig = fs.existsSync(docsiteConfigPath)
-  ? yaml.load(fs.readFileSync(docsiteConfigPath, 'utf8'))
-  : {};
 
 const md = new MarkdownIt({
   html: true,
@@ -37,9 +33,7 @@ const md = new MarkdownIt({
     }
     return '';
   },
-})
-  .use(markdownItGithubPreamble)
-  .use(markdownItFootnote);
+}).use(markdownItFootnote);
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -56,13 +50,12 @@ function removeGenerated() {
   });
 }
 
-function getConfigValue(type, page, language, key) {
-  return docsiteConfig
-    && docsiteConfig[type]
-    && docsiteConfig[type][page]
-    && docsiteConfig[type][page][language]
-    && docsiteConfig[type][page][language][key]
-    ? docsiteConfig[type][page][language][key]
+function getPageMetaValue(page, language, key) {
+  return pageMeta
+    && pageMeta[page]
+    && pageMeta[page][language]
+    && pageMeta[page][language][key]
+    ? pageMeta[page][language][key]
     : '';
 }
 
@@ -125,9 +118,9 @@ function renderPage(language, page, subPage = '') {
   const htmlPath = page === 'home'
     ? path.join(cwd, language, 'index.html')
     : path.join(cwd, language, page, subPage, 'index.html');
-  const title = getConfigValue('pages', page, language, 'title') || subPage || page;
-  const keywords = getConfigValue('pages', page, language, 'keywords') || subPage || page;
-  const description = getConfigValue('pages', page, language, 'description') || subPage || page;
+  const title = getPageMetaValue(page, language, 'title') || subPage || page;
+  const keywords = getPageMetaValue(page, language, 'keywords') || subPage || page;
+  const description = getPageMetaValue(page, language, 'description') || subPage || page;
   const entryPath = subPage
     ? `/src/pages/${page}/${subPage}/index.jsx`
     : `/src/pages/${page}/index.jsx`;
