@@ -1,7 +1,7 @@
 // 全局的一些配置
 export default {
   rootPath: '', // 发布到服务器的根目录，需以/开头但不能有尾/，如果只有/，请填写空字符串
-  port: 8080, // 本地开发服务器的启动端口
+  port: 8081, // 本地开发服务器的启动端口
   domain: 'kkview.cn', // 站点部署域名，无需协议和path等
   defaultSearch: 'baidu', // 默认搜索引擎，baidu或者google
   defaultLanguage: 'zh-cn',
@@ -63,7 +63,7 @@ export default {
         // },
       ],
     },
-    copyright: 'Copyright © 2023 KK开源社区',
+    copyright: 'Copyright © 2018 ~ 2026 KK开源社区',
   },
   'zh-cn': {
     pageMenu: [
@@ -90,7 +90,24 @@ export default {
     ],
     disclaimer: {
       title: '免责声明',
-      content: '',
+      list: [
+        {
+          title: '开源协议',
+          text: '本项目按开源协议发布，使用与二次开发请遵守对应协议。',
+        },
+        {
+          title: '演示环境说明',
+          text: '在线演示仅用于功能体验，请勿上传敏感、涉密或隐私文件。',
+        },
+        {
+          title: '数据安全提示',
+          text: '独立部署时，文件处理与存储策略由接入方自行配置和负责。',
+        },
+        {
+          title: '第三方组件声明',
+          text: '部分格式预览依赖第三方软件或组件，版权归各自权利方所有。',
+        },
+      ],
     },
     documentation: {
       title: '文档',
@@ -134,7 +151,6 @@ export default {
         },
       ],
     },
-    copyright: 'Copyright © 2023 KK开源社区',
+    copyright: 'Copyright © 2018 ~ 2026 KK开源社区',
   },
 };
-

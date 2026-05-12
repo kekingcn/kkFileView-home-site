@@ -33,7 +33,7 @@ gulp.task('webpack-dev-server', () => {
     },
   }).listen(port, '127.0.0.1', (err) => {
     if (err) throw new gutil.PluginError('webpack-dev-server', err);
-    opn(`http://127.0.0.1:${port}/`);
+    opn(`http://127.0.0.1:${port}/zh-cn/index.html`);
     gutil.log('[webpack-dev-server]', `http://127.0.0.1:${port}/webpack-dev-server/index.html`);
   });
 });

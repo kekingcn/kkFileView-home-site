@@ -20,7 +20,20 @@ class Footer extends React.Component {
           <div className="cols-container">
             <div className="col col-12">
               <h3>{dataSource.disclaimer.title}</h3>
-              <p>{dataSource.disclaimer.content}</p>
+              {
+                dataSource.disclaimer.list ?
+                  <ul className="disclaimer-list">
+                    {
+                      dataSource.disclaimer.list.map((item, i) => (
+                        <li key={i}>
+                          <strong>{item.title}</strong>
+                          <span>{item.text}</span>
+                        </li>
+                      ))
+                    }
+                  </ul> :
+                  <p>{dataSource.disclaimer.content}</p>
+              }
             </div>
             <div className="col col-6">
               <dl>

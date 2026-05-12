@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .footer-container {
-  background: #F8F8F8;
+  background: #202423;
   .footer-body {
     max-width: $contentWidth;
     margin: 0 auto;
@@ -18,6 +18,8 @@
       margin-bottom: 28px;
       margin-right: 20px;
       vertical-align: middle;
+      filter: brightness(0) invert(1);
+      opacity: .96;
     }
     .cols-container {
       margin-bottom: 60px;
@@ -36,15 +38,36 @@
       h3 {
         font-family: Avenir-Heavy;
         font-size: 18px;
-        color: #333;
+        color: #F2F4F3;
         line-height: 18px;
         margin-bottom: 20px;
       }
       p {
         font-family: Avenir-Medium;
         font-size: 12px;
-        color: #999;
+        color: #8F9694;
         line-height: 18px;
+      }
+      .disclaimer-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+          margin: 0 0 10px;
+          font-family: Avenir-Medium;
+          font-size: 12px;
+          line-height: 18px;
+          color: #8F9694;
+        }
+        strong {
+          display: inline-block;
+          margin-right: 6px;
+          color: #D9DEDC;
+          font-family: Avenir-Heavy;
+        }
+        span {
+          color: #8F9694;
+        }
       }
       dl {
         font-family: Avenir-Heavy;
@@ -53,7 +76,7 @@
       dt {
         font-weight: bold;
         font-size: 18px;
-        color: #333;
+        color: #F2F4F3;
         margin-bottom: 20px;
       }
       dd {
@@ -63,24 +86,31 @@
           text-decoration: none;
           display: block;
           font-size: 14px;
-          color: #999;
+          color: #9EA5A3;
           margin: 10px 0;
         }
         a:hover {
-          color: $brandColor;
+          color: #FFF;
         }
       }
     }
     .copyright {
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #343A38;
       min-height: 60px;
       line-height: 20px;
       text-align: center;
       font-family: Avenir-Medium;
       font-size: 12px;
-      color: #999;
+      color: #8F9694;
       display: flex;
       align-items: center;
+      a {
+        color: #C7CECB;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #FFF;
+      }
       span {
         display: inline-block;
         margin: 0 auto;

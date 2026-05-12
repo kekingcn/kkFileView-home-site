@@ -187,6 +187,13 @@
       }
     }
   }
+  &-primary {
+    .header-body {
+      .logo {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
 }
 
 @media screen and (max-width: $mobileWidth) {
