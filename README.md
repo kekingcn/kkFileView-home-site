@@ -68,6 +68,7 @@ npm audit         # 依赖安全检查
 
 - 不再依赖 `docsite-ext`、`webpack 3`、`gulp`、`node-sass`
 - Markdown 渲染逻辑在 `scripts/generate-site.cjs`
+- 页面 `<title>`、`keywords`、`description` 配置在 `site_config/pageMeta.js`
 - 构建后的静态资源补充复制逻辑在 `scripts/copy-static.cjs`
 - Vite 多页面入口配置在 `vite.config.mjs`
 - SCSS 已迁移到 Sass 模块语法 `@use`，不再使用废弃的 `@import`
