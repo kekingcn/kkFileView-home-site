@@ -20,9 +20,6 @@ jobs:
       KKVIEW_WINRM_PORT: ${{ secrets.KKVIEW_WINRM_PORT }}
       KKVIEW_DEPLOY_PATH: ${{ secrets.KKVIEW_DEPLOY_PATH }}
       KKVIEW_REMOTE_ZIP_PATH: ${{ secrets.KKVIEW_REMOTE_ZIP_PATH }}
-      KKVIEW_DEPLOY_UPLOAD_URL: ${{ secrets.KKVIEW_DEPLOY_UPLOAD_URL }}
-      KKVIEW_DEPLOY_UPLOAD_USERNAME: ${{ secrets.KKVIEW_DEPLOY_UPLOAD_USERNAME }}
-      KKVIEW_DEPLOY_UPLOAD_PASSWORD: ${{ secrets.KKVIEW_DEPLOY_UPLOAD_PASSWORD }}
 
     steps:
       - name: Checkout
@@ -47,24 +44,16 @@ jobs:
         run: zip -qr dist.zip dist
 
       - name: Install deploy dependency
-        run: python -m pip install --upgrade pywinrm
+        run: python -m pip install --upgrade pywinrm pypsrp
 
       - name: Upload site package
         run: |
           set -euo pipefail
-          split -b 1m -d -a 3 dist.zip dist.zip.part-
+          split -b 512k -d -a 3 dist.zip dist.zip.part-
           remote_parts_dir="${KKVIEW_REMOTE_ZIP_PATH}.parts"
-          for part in dist.zip.part-*; do
-            part_name="$(basename "${part}")"
-            export KKVIEW_REMOTE_ZIP_PATH="${remote_parts_dir}\\${part_name}"
-            python scripts/start-upload-listener.py
-            curl --http1.1 --fail --show-error \
-              --connect-timeout 20 --max-time 60 \
-              -H "Expect:" \
-              --user "${KKVIEW_DEPLOY_UPLOAD_USERNAME}:${KKVIEW_DEPLOY_UPLOAD_PASSWORD}" \
-              --upload-file "${part}" \
-              "${KKVIEW_DEPLOY_UPLOAD_URL}"
-          done
+          python scripts/upload-winrm-parts.py \
+            --parts-glob "dist.zip.part-*" \
+            --remote-parts-dir "${remote_parts_dir}"
           echo "KKVIEW_REMOTE_PARTS_DIR=${remote_parts_dir}" >> "${GITHUB_ENV}"
 
       - name: Deploy to Windows Nginx

@@ -84,9 +84,6 @@ KKVIEW_WINRM_PASSWORD
 KKVIEW_WINRM_PORT
 KKVIEW_DEPLOY_PATH
 KKVIEW_REMOTE_ZIP_PATH
-KKVIEW_DEPLOY_UPLOAD_URL
-KKVIEW_DEPLOY_UPLOAD_USERNAME
-KKVIEW_DEPLOY_UPLOAD_PASSWORD
 ```
 
-发布流程会先启动一次性的远端上传接收器，通过 Nginx 受保护上传入口传输 `dist.zip`，再由 `scripts/deploy-winrm.py` 备份当前站点目录并替换官网静态文件。
+发布流程会把 `dist.zip` 切成小分片，通过 WinRM 上传到服务器，再由 `scripts/deploy-winrm.py` 合并分片、备份当前站点目录并替换官网静态文件。
