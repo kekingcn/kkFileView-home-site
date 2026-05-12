@@ -83,6 +83,7 @@ def main() -> int:
         "KKVIEW_REMOTE_TEMP",
         rf"C:\Windows\Temp\kkview-home-site-{int(time.time())}",
     )
+    max_envelope_size = int(os.environ.get("KKVIEW_WINRM_MAX_ENVELOPE") or "450000")
 
     endpoint = f"http://{host}:{port}/wsman"
     session = winrm.Session(
@@ -121,9 +122,10 @@ Write-Output "Prepared remote temp: {remote_temp}"
         auth=transport,
         operation_timeout=60,
         read_timeout=90,
+        max_envelope_size=max_envelope_size,
     )
     copied_to = client.copy(str(artifact), remote_zip)
-    print(f"Uploaded artifact to {copied_to}")
+    print(f"Uploaded artifact to {copied_to}", flush=True)
 
     remove_paths = [
         item.strip()
