@@ -42,7 +42,7 @@ def main() -> int:
     password = require_env("KKVIEW_WINRM_PASSWORD")
     port = os.environ.get("KKVIEW_WINRM_PORT") or "5985"
     transport = os.environ.get("KKVIEW_WINRM_TRANSPORT") or "ntlm"
-    max_envelope_size = int(os.environ.get("KKVIEW_WINRM_MAX_ENVELOPE") or "450000")
+    max_envelope_size = int(os.environ.get("KKVIEW_WINRM_MAX_ENVELOPE") or "65536")
 
     endpoint = f"http://{host}:{port}/wsman"
     session = winrm.Session(
