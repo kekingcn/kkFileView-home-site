@@ -49,15 +49,21 @@ jobs:
       - name: Install deploy dependency
         run: python -m pip install --upgrade pywinrm
 
-      - name: Start remote upload receiver
-        run: python scripts/start-upload-listener.py
-
       - name: Upload site package
         run: |
-          curl --http1.1 --fail --show-error \
-            --user "${KKVIEW_DEPLOY_UPLOAD_USERNAME}:${KKVIEW_DEPLOY_UPLOAD_PASSWORD}" \
-            --upload-file dist.zip \
-            "${KKVIEW_DEPLOY_UPLOAD_URL}"
+          set -euo pipefail
+          split -b 1m -d -a 3 dist.zip dist.zip.part-
+          remote_parts_dir="${KKVIEW_REMOTE_ZIP_PATH}.parts"
+          for part in dist.zip.part-*; do
+            part_name="$(basename "${part}")"
+            export KKVIEW_REMOTE_ZIP_PATH="${remote_parts_dir}\\${part_name}"
+            python scripts/start-upload-listener.py
+            curl --http1.1 --fail --show-error \
+              --user "${KKVIEW_DEPLOY_UPLOAD_USERNAME}:${KKVIEW_DEPLOY_UPLOAD_PASSWORD}" \
+              --upload-file "${part}" \
+              "${KKVIEW_DEPLOY_UPLOAD_URL}"
+          done
+          echo "KKVIEW_REMOTE_PARTS_DIR=${remote_parts_dir}" >> "${GITHUB_ENV}"
 
       - name: Deploy to Windows Nginx
-        run: python scripts/deploy-winrm.py --remote-zip "${KKVIEW_REMOTE_ZIP_PATH}"
+        run: python scripts/deploy-winrm.py --remote-zip "${KKVIEW_REMOTE_ZIP_PATH}" --remote-parts-dir "${KKVIEW_REMOTE_PARTS_DIR}"

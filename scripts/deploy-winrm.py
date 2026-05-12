@@ -61,6 +61,10 @@ def parse_args() -> argparse.Namespace:
         "--remote-zip",
         help="Existing zip path on the remote Windows host. Skips WinRM file copy.",
     )
+    parser.add_argument(
+        "--remote-parts-dir",
+        help="Directory containing sorted remote zip parts to concatenate first.",
+    )
     parser.add_argument("--chunk-size", type=int, help=argparse.SUPPRESS)
     parser.add_argument(
         "--remove-paths",
@@ -158,6 +162,33 @@ if (!(Test-Path $deployPath)) {{
   throw "Deploy path does not exist: $deployPath"
 }}
 
+if ({'$true' if args.remote_parts_dir else '$false'}) {{
+  $partsDir = {ps_quote(args.remote_parts_dir or '')}
+  if (!(Test-Path $partsDir)) {{
+    throw "Remote parts directory does not exist: $partsDir"
+  }}
+  $parts = Get-ChildItem -Path $partsDir -File | Sort-Object Name
+  if (($parts | Measure-Object).Count -eq 0) {{
+    throw "No remote parts found in: $partsDir"
+  }}
+  if (Test-Path $zipPath) {{
+    Remove-Item -Path $zipPath -Force
+  }}
+  $out = [System.IO.File]::Create($zipPath)
+  try {{
+    foreach ($part in $parts) {{
+      $in = [System.IO.File]::OpenRead($part.FullName)
+      try {{
+        $in.CopyTo($out)
+      }} finally {{
+        $in.Close()
+      }}
+    }}
+  }} finally {{
+    $out.Close()
+  }}
+}}
+
 if (Test-Path $extractPath) {{ Remove-Item -Path $extractPath -Recurse -Force }}
 New-Item -Path $extractPath -ItemType Directory -Force | Out-Null
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -184,6 +215,9 @@ Copy-Item -Path (Join-Path $distPath '*') -Destination $deployPath -Recurse -For
 Remove-Item -Path $remoteTemp -Recurse -Force
 if ({'$true' if args.remote_zip else '$false'} -and (Test-Path $zipPath)) {{
   Remove-Item -Path $zipPath -Force
+}}
+if ({'$true' if args.remote_parts_dir else '$false'} -and (Test-Path {ps_quote(args.remote_parts_dir or '')})) {{
+  Remove-Item -Path {ps_quote(args.remote_parts_dir or '')} -Recurse -Force
 }}
 
 Write-Output "Deploy path: $deployPath"
