@@ -203,7 +203,7 @@ foreach ($name in {remove_paths_ps}) {{
     try {{
       Remove-Item -Path $target -Recurse -Force -ErrorAction Stop
     }} catch {{
-      Write-Warning "Could not remove stale path $target: $($_.Exception.Message)"
+      Write-Warning "Could not remove stale path $($target): $($_.Exception.Message)"
     }}
   }}
 }}
