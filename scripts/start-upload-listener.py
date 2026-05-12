@@ -90,6 +90,16 @@ $listenerPort = {ps_quote(listener_port)}
 $bytes = [System.Convert]::FromBase64String({ps_quote(encoded_script)})
 [System.IO.File]::WriteAllBytes($listenerPath, $bytes)
 Unregister-ScheduledTask -TaskName 'kkview-upload-listener' -Confirm:$false -ErrorAction SilentlyContinue
+Get-CimInstance Win32_Process -Filter "name='powershell.exe'" |
+  Where-Object {{ $_.CommandLine -like '*kkview-upload-listener.ps1*' }} |
+  ForEach-Object {{ Invoke-CimMethod -InputObject $_ -MethodName Terminate | Out-Null }}
+for ($i = 0; $i -lt 20; $i++) {{
+  $busy = netstat -ano | Select-String (':{listener_port}\s')
+  if (!$busy) {{
+    break
+  }}
+  Start-Sleep -Milliseconds 500
+}}
 $argument = '-NoProfile -ExecutionPolicy Bypass -File "' + $listenerPath + '" -OutputPath "' + $outputPath + '" -Prefix "http://127.0.0.1:' + $listenerPort + '/"'
 $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $argument
 $trigger = New-ScheduledTaskTrigger -Once -At ((Get-Date).AddMinutes(10))

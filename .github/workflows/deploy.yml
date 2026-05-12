@@ -59,6 +59,8 @@ jobs:
             export KKVIEW_REMOTE_ZIP_PATH="${remote_parts_dir}\\${part_name}"
             python scripts/start-upload-listener.py
             curl --http1.1 --fail --show-error \
+              --connect-timeout 20 --max-time 60 \
+              -H "Expect:" \
               --user "${KKVIEW_DEPLOY_UPLOAD_USERNAME}:${KKVIEW_DEPLOY_UPLOAD_PASSWORD}" \
               --upload-file "${part}" \
               "${KKVIEW_DEPLOY_UPLOAD_URL}"
