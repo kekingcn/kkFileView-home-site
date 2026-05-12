@@ -1,0 +1,49 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: kkview-home-site-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      KKVIEW_WINRM_HOST: ${{ secrets.KKVIEW_WINRM_HOST }}
+      KKVIEW_WINRM_USERNAME: ${{ secrets.KKVIEW_WINRM_USERNAME }}
+      KKVIEW_WINRM_PASSWORD: ${{ secrets.KKVIEW_WINRM_PASSWORD }}
+      KKVIEW_WINRM_PORT: ${{ secrets.KKVIEW_WINRM_PORT }}
+      KKVIEW_DEPLOY_PATH: ${{ secrets.KKVIEW_DEPLOY_PATH }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Pack site
+        run: zip -qr dist.zip dist
+
+      - name: Install deploy dependency
+        run: python -m pip install --upgrade pywinrm pypsrp
+
+      - name: Deploy to Windows Nginx
+        run: python scripts/deploy-winrm.py --artifact dist.zip

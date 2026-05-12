@@ -72,3 +72,17 @@ npm audit         # 依赖安全检查
 - 构建后的静态资源补充复制逻辑在 `scripts/copy-static.cjs`
 - Vite 多页面入口配置在 `vite.config.mjs`
 - SCSS 已迁移到 Sass 模块语法 `@use`，不再使用废弃的 `@import`
+
+## 自动发布
+
+`.github/workflows/deploy.yml` 会在 `main` 分支推送后自动构建并通过 WinRM 发布到 Windows Nginx 站点目录。需要在 GitHub 仓库 Secrets 中配置：
+
+```text
+KKVIEW_WINRM_HOST
+KKVIEW_WINRM_USERNAME
+KKVIEW_WINRM_PASSWORD
+KKVIEW_WINRM_PORT
+KKVIEW_DEPLOY_PATH
+```
+
+发布脚本为 `scripts/deploy-winrm.py`。脚本会先备份当前站点目录，再替换构建产物中的官网静态文件。
