@@ -34,7 +34,7 @@ export default {
       stats: [
         {
           value: '150+',
-          label: '企业用户',
+          label: '登记企业用户',
         },
         {
           value: '20+',
