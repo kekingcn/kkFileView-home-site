@@ -13,17 +13,8 @@ import winrm
 
 
 DEFAULT_REMOVE_PATHS = (
-    "assets",
     "build",
-    "img",
-    "docs",
-    "blog",
-    "zh-cn",
-    "en-us",
-    "md_json",
     "node_modules",
-    "index.html",
-    "404.html",
 )
 
 
@@ -69,7 +60,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--remove-paths",
         default=",".join(DEFAULT_REMOVE_PATHS),
-        help="Comma-separated paths to remove from deploy root before copying.",
+        help="Comma-separated stale paths to remove from deploy root after copying.",
     )
     return parser.parse_args()
 
@@ -204,14 +195,19 @@ New-Item -Path $backupRoot -ItemType Directory -Force | Out-Null
 $backupPath = Join-Path $backupRoot ("kkview-" + (Get-Date -Format 'yyyyMMddHHmmss') + ".zip")
 [System.IO.Compression.ZipFile]::CreateFromDirectory($deployPath, $backupPath)
 
+Copy-Item -Path (Join-Path $distPath '*') -Destination $deployPath -Recurse -Force
+
 foreach ($name in {remove_paths_ps}) {{
   $target = Join-Path $deployPath $name
   if (Test-Path $target) {{
-    Remove-Item -Path $target -Recurse -Force
+    try {{
+      Remove-Item -Path $target -Recurse -Force -ErrorAction Stop
+    }} catch {{
+      Write-Warning "Could not remove stale path $target: $($_.Exception.Message)"
+    }}
   }}
 }}
 
-Copy-Item -Path (Join-Path $distPath '*') -Destination $deployPath -Recurse -Force
 Remove-Item -Path $remoteTemp -Recurse -Force
 if ({'$true' if args.remote_zip else '$false'} -and (Test-Path $zipPath)) {{
   Remove-Item -Path $zipPath -Force
