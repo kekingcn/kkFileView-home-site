@@ -10,7 +10,6 @@ import sys
 import time
 
 import winrm
-from pypsrp.client import Client
 
 
 DEFAULT_REMOVE_PATHS = (
@@ -58,6 +57,10 @@ def parse_args() -> argparse.Namespace:
         default="dist.zip",
         help="Zip file containing the dist directory.",
     )
+    parser.add_argument(
+        "--remote-zip",
+        help="Existing zip path on the remote Windows host. Skips WinRM file copy.",
+    )
     parser.add_argument("--chunk-size", type=int, help=argparse.SUPPRESS)
     parser.add_argument(
         "--remove-paths",
@@ -70,7 +73,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     artifact = pathlib.Path(args.artifact).resolve()
-    if not artifact.is_file():
+    if not args.remote_zip and not artifact.is_file():
         raise SystemExit(f"Artifact does not exist: {artifact}")
 
     host = require_env("KKVIEW_WINRM_HOST")
@@ -95,7 +98,7 @@ def main() -> int:
     )
 
     remote_temp_q = ps_quote(remote_temp)
-    remote_zip = remote_temp + r"\dist.zip"
+    uploaded_zip = remote_temp + r"\dist.zip"
 
     run_ps(
         session,
@@ -108,24 +111,31 @@ Write-Output "Prepared remote temp: {remote_temp}"
         "prepare remote temp",
     )
 
-    ssl = (os.environ.get("KKVIEW_WINRM_SSL") or "").lower() in {
-        "1",
-        "true",
-        "yes",
-    } or port == "5986"
-    client = Client(
-        host,
-        username=username,
-        password=password,
-        ssl=ssl,
-        port=int(port),
-        auth=transport,
-        operation_timeout=60,
-        read_timeout=90,
-        max_envelope_size=max_envelope_size,
-    )
-    copied_to = client.copy(str(artifact), remote_zip)
-    print(f"Uploaded artifact to {copied_to}", flush=True)
+    if args.remote_zip:
+        remote_zip = args.remote_zip
+        print(f"Using remote artifact at {remote_zip}", flush=True)
+    else:
+        from pypsrp.client import Client
+
+        ssl = (os.environ.get("KKVIEW_WINRM_SSL") or "").lower() in {
+            "1",
+            "true",
+            "yes",
+        } or port == "5986"
+        client = Client(
+            host,
+            username=username,
+            password=password,
+            ssl=ssl,
+            port=int(port),
+            auth=transport,
+            operation_timeout=60,
+            read_timeout=90,
+            max_envelope_size=max_envelope_size,
+        )
+        remote_zip = uploaded_zip
+        copied_to = client.copy(str(artifact), remote_zip)
+        print(f"Uploaded artifact to {copied_to}", flush=True)
 
     remove_paths = [
         item.strip()
@@ -141,7 +151,7 @@ Write-Output "Prepared remote temp: {remote_temp}"
 $ErrorActionPreference = 'Stop'
 $deployPath = {deploy_path_q}
 $remoteTemp = {remote_temp_q}
-$zipPath = Join-Path $remoteTemp 'dist.zip'
+$zipPath = {ps_quote(remote_zip)}
 $extractPath = Join-Path $remoteTemp 'extract'
 
 if (!(Test-Path $deployPath)) {{
@@ -172,6 +182,9 @@ foreach ($name in {remove_paths_ps}) {{
 
 Copy-Item -Path (Join-Path $distPath '*') -Destination $deployPath -Recurse -Force
 Remove-Item -Path $remoteTemp -Recurse -Force
+if ({'$true' if args.remote_zip else '$false'} -and (Test-Path $zipPath)) {{
+  Remove-Item -Path $zipPath -Force
+}}
 
 Write-Output "Deploy path: $deployPath"
 Write-Output "Backup path: $backupPath"
