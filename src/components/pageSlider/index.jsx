@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { autobind } from 'core-decorators';
 import classnames from 'classnames';
 import { throttle, getLink } from '../../../utils';
 
@@ -14,7 +13,6 @@ const defaultProps = {
   pageSize: 5,
 };
 
-@autobind
 class pageSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +25,6 @@ class pageSlider extends React.Component {
 
   componentDidMount() {
     const pageWidth = this.container.getBoundingClientRect().width;
-    /* eslint-disable react/no-did-mount-set-state */
     this.setState({
       pageWidth,
     });
@@ -56,7 +53,6 @@ class pageSlider extends React.Component {
     const len = React.Children.count(children);
     // 分成的屏数
     const splitNum = Math.ceil(len / pageSize);
-    /* eslint-disable no-plusplus */
     for (let i = 0; i < splitNum; i++) {
       splitGroup.push(Array.from(children).slice(i * pageSize, (i + 1) * pageSize));
     }

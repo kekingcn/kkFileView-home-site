@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { autobind } from 'core-decorators';
 import classnames from 'classnames';
 import { throttle } from '../../../utils';
 
 import './index.scss';
 
-@autobind
 class Slider extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +23,6 @@ class Slider extends React.Component {
     }, 200);
     window.addEventListener('resize', this.throttleAdjust);
     // 做重新布局
-    /* eslint-disable react/no-did-mount-set-state */
     this.setState({
       visibleNum: this.getVisibleNum(),
     });
@@ -37,7 +34,6 @@ class Slider extends React.Component {
 
   getVisibleNum() {
     // 比较粗略的计算，假定一屏的子节点外边距之和不会超过一个子节点的宽度
-    /* eslint-disable react/no-find-dom-node */
     let result = 1;
     const containerWidth = this.container.getBoundingClientRect().width;
     const childWidth = this.sliderItemChild0.getBoundingClientRect ? this.sliderItemChild0.getBoundingClientRect().width : ReactDOM.findDOMNode(this.sliderItemChild0).getBoundingClientRect().width;
@@ -79,7 +75,6 @@ class Slider extends React.Component {
     const len = React.Children.count(children);
     // 分成的屏数
     const splitNum = Math.ceil(len / visibleNum);
-    /* eslint-disable no-plusplus */
     for (let i = 0; i < splitNum; i++) {
       splitGroup.push(Array.from(children).slice(i * visibleNum, (i + 1) * visibleNum));
     }

@@ -1,9 +1,7 @@
 import React from 'react';
-import { autobind } from 'core-decorators';
 import classnames from 'classnames';
 import { getLink } from '../../../utils';
 
-@autobind
 class Item extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +19,8 @@ class Item extends React.Component {
     this.state = {
       opened,
     };
+    this.onItemClick = this.onItemClick.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   onItemClick(e) {

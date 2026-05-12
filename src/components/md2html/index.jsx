@@ -1,5 +1,4 @@
 import { scroller } from 'react-scroll';
-import path from 'path';
 import 'whatwg-fetch'; // fetch polyfill
 import siteConfig from '../../../site_config/site';
 import './index.scss';
@@ -7,6 +6,13 @@ import './index.scss';
 const anchorReg = /^#[^/]/;
 // 相对地址正则，包括./、../、直接文件夹名称开头、直接文件开头
 const relativeReg = /^((\.{1,2}\/)|([\w-]+[/.]))/;
+const joinUrl = (...parts) => {
+  const normalized = parts
+    .filter(part => part !== undefined && part !== null && `${part}` !== '')
+    .join('/')
+    .replace(/\/+/g, '/');
+  return normalized.startsWith('/') ? normalized : `/${normalized}`;
+};
 
 const Md2Html = ComposeComponent => class extends ComposeComponent {
   constructor(props) {
@@ -54,7 +60,7 @@ const Md2Html = ComposeComponent => class extends ComposeComponent {
       const href = alink.getAttribute('href');
       if (relativeReg.test(href)) {
         // 文档之间有中英文之分，md的相对地址要转换为对应HTML的地址
-        alink.href = `${path.join(`${window.rootPath}/${language}`, filePath, href.replace(/\.(md|markdown)$/, '.html'))}`;
+        alink.href = joinUrl(window.rootPath, language, filePath, href.replace(/\.(md|markdown)$/, '.html'));
       }
     });
   }
@@ -70,7 +76,7 @@ const Md2Html = ComposeComponent => class extends ComposeComponent {
       const src = img.getAttribute('src');
       if (relativeReg.test(src)) {
         // 图片无中英文之分
-        img.src = `${path.join(window.rootPath, filePath, src)}`;
+        img.src = joinUrl(window.rootPath, filePath, src);
       }
     });
   }
