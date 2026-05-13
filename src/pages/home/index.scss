@@ -803,7 +803,10 @@ $animation5Height: 460px;
       }
       .hero-stat {
         min-width: 0;
+        width: max-content;
+        margin: 0 auto;
         padding-left: 12px;
+        text-align: left;
         &::before {
           top: 4px;
           height: 32px;
