@@ -796,28 +796,25 @@ $animation5Height: 460px;
         }
       }
       .hero-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px 12px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
         max-width: none;
         margin-top: 24px;
       }
       .hero-stat {
         min-width: 0;
-        width: max-content;
-        margin: 0 auto;
-        padding-left: 12px;
-        text-align: left;
+        padding-left: 0;
+        text-align: center;
         &::before {
-          top: 4px;
-          height: 32px;
+          display: none;
         }
         strong {
-          font-size: 24px;
+          font-size: 22px;
         }
         span {
-          white-space: normal;
-          font-size: 13px;
-          line-height: 1.35;
+          white-space: nowrap;
+          font-size: 11px;
+          line-height: 1.3;
         }
       }
       .hero-visual {
