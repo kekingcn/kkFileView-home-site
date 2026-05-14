@@ -110,8 +110,16 @@ function renderRedirects() {
     defaultLanguage,
     rootPath,
   });
-  writeFile(path.join(cwd, 'index.html'), html);
   writeFile(path.join(cwd, '404.html'), html);
+}
+
+function renderRootHome() {
+  writeFile(path.join(cwd, 'index.html'), renderTemplate({
+    title: getPageMetaValue('home', defaultLanguage, 'title') || 'home',
+    keywords: getPageMetaValue('home', defaultLanguage, 'keywords') || 'home',
+    description: getPageMetaValue('home', defaultLanguage, 'description') || 'home',
+    entryPath: '/src/pages/home/index.jsx',
+  }));
 }
 
 function renderPage(language, page, subPage = '') {
@@ -208,5 +216,6 @@ function renderMarkdownPages(type) {
 
 removeGenerated();
 renderRedirects();
+renderRootHome();
 renderTopLevelPages();
 mdPageTypes.forEach(renderMarkdownPages);

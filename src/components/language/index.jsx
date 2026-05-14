@@ -5,13 +5,18 @@ import siteConfig from '../../../site_config/site';
 class Language extends React.Component {
   onLanguageChange = (language) => {
     const pathname = window.location.pathname;
+    const rootPath = window.rootPath || '';
     let oldLang;
     if (language === 'zh-cn') {
       oldLang = 'en-us';
     } else {
       oldLang = 'zh-cn';
     }
-    const newPathname = pathname.replace(`${window.rootPath}/${oldLang}`, `${window.rootPath}/${language}`);
+    const oldPrefix = `${rootPath}/${oldLang}`;
+    const newPrefix = `${rootPath}/${language}`;
+    const newPathname = pathname.indexOf(oldPrefix) === 0
+      ? pathname.replace(oldPrefix, newPrefix)
+      : `${newPrefix}/index.html`;
     cookie.set('docsite_language', language, { expires: 365 });
     window.location = newPathname;
   };
