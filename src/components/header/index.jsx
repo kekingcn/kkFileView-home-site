@@ -130,7 +130,7 @@ class Header extends React.Component {
         }
       >
         <div className="header-body">
-          <a href={getLink(`/${language}/index.html`)}>
+          <a href={`${siteConfig.rootPath || ''}/`}>
             <img className="logo" alt={siteConfig.name} title={siteConfig.name} src={getLink(logo)} />
           </a>
           {
